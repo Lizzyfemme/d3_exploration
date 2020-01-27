@@ -35,21 +35,39 @@ const dataYears = [
   "2019",
   "2020"
 ];
-const height = 200;
-const width = 500;
-const area = d3
+
+var height = 200;
+var width = 500;
+
+var margin = { left: 50, right: 50, top: 40, bottom: 0 };
+
+var y = d3
+  .scaleLinear()
+  .domain([0, 180])
+  .range([height, 0]);
+
+var yAxis = d3.axisLeft(y);
+
+var area = d3
   .area()
   .x(function(d, i) {
     return i * 20;
   })
   .y0(height)
   .y1(function(d) {
-    return height - d;
+    return y(d);
   });
-const svg = d3
+var svg = d3
   .select("body")
   .append("svg")
   .attr("height", "100%")
   .attr("width", "100%");
+var chartGroup = svg
+  .append("g")
+  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-svg.append("path").attr("d", area(dataArray));
+chartGroup.append("path").attr("d", area(dataArray));
+chartGroup
+  .append("g")
+  .attr("class", "axis y")
+  .call(yAxis);
