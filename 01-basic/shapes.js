@@ -1,4 +1,24 @@
 const dataArray = [5, 8, 11];
+const dataDays = ["Mon", "Wed", "Fri"];
+
+// const x = d3
+//   .scaleOrdinal()
+//   .domain(dataDays)
+//   .range([25, 85, 145]);
+
+// const x = d3
+//   .scalePoint()
+//   .domain(dataDays)
+//   .range([0, 170]);
+
+const x = d3
+  .scaleBand()
+  .domain(dataDays)
+  .range([0, 170])
+  .padding(0.1176);
+
+let xAxis = d3.axisBottom(x);
+
 let svg = d3
   .select("body")
   .append("svg")
@@ -21,6 +41,11 @@ svg
   .attr("y", function(d, i) {
     return 300 - d * 15;
   });
+svg
+  .append("g")
+  .attr("class", "x axis hidden")
+  .attr("transform", "translate(0,300)")
+  .call(xAxis);
 let xCircleAxis = 300;
 svg
   .selectAll("circle.circle")
