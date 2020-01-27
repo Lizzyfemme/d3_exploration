@@ -11,6 +11,7 @@ svg.selectAll("rect")
                 .attr("x",function(d,i){ return 60*i; })
                 .attr("y",function(d,i){ return 300-(d*15); });
 
+
 var newX = 300;
 svg.selectAll("circle.first")
       .data(dataArray)
