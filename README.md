@@ -7,3 +7,11 @@ Trying to improve my understand of d3.
 ### Basic
 
 !["Basic"](https://github.com/Lizzyfemme/d3_exploration/blob/master/images/basic.png)
+
+### Line Chart
+
+!["Line Chart"](https://github.com/Lizzyfemme/d3_exploration/blob/master/images/lineChart.png)
+
+### Area Chart
+
+!["Area Chart"](https://github.com/Lizzyfemme/d3_exploration/blob/master/images/areaChart.png)

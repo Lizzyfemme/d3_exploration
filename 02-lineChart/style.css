@@ -1,8 +1,14 @@
-html, body {
+html,
+body {
   margin: 0;
   height: 100%;
 }
 
 line {
   stroke: red;
+}
+g.group0 path,
+g.group0 circle {
+  stroke: teal;
+  fill: none;
 }
