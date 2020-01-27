@@ -1,6 +1,9 @@
 const dataArray = [5, 8, 11];
 const dataDays = ["Mon", "Wed", "Fri"];
 
+const rainbow = d3.scaleSequential(d3.interpolateRainbow).domain([0, 10]);
+const rainbow2 = d3.scaleSequential(d3.interpolateRainbow).domain([0, 3]);
+const cat20 = d3.schemeCategory20;
 // const x = d3
 //   .scaleOrdinal()
 //   .domain(dataDays)
@@ -33,7 +36,9 @@ svg
   .attr("height", function(d, i) {
     return d * 15;
   })
-  .attr("fill", "teal")
+  .attr("fill", function(d, i) {
+    return rainbow(i);
+  })
   .attr("width", "50")
   .attr("x", function(d, i) {
     return 60 * i;
@@ -58,6 +63,9 @@ svg
   })
   .attr("cy", "100")
   .attr("class", "circle")
+  .attr("fill", function(d, i) {
+    return rainbow2(i);
+  })
   .attr("r", function(d, i) {
     return d * 3;
   });
@@ -74,6 +82,9 @@ svg
   })
   .attr("cy", "100")
   .attr("class", "ellipse")
+  .attr("fill", function(d, i) {
+    return cat20[i];
+  })
   .attr("rx", function(d, i) {
     return d * 3;
   })
