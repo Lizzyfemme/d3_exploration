@@ -1,4 +1,4 @@
-var parseDate = d3.timeParse("%m/%d/%Y");
+let parseDate = d3.timeParse("%m/%d/%Y");
 
 d3.csv("prices.csv")
   .row(function(d) {
@@ -8,43 +8,42 @@ d3.csv("prices.csv")
     };
   })
   .get(function(error, data) {
-    var height = 300;
-    var width = 500;
-
-    var max = d3.max(data, function(d) {
+    let height = 300;
+    let width = 50;
+    let max = d3.max(data, function(d) {
       return d.price;
     });
-    var minDate = d3.min(data, function(d) {
+    let minDate = d3.min(data, function(d) {
       return d.month;
     });
-    var maxDate = d3.max(data, function(d) {
+    let maxDate = d3.max(data, function(d) {
       return d.month;
     });
-
-    var y = d3
+    let y = d3
       .scaleLinear()
       .domain([0, max])
       .range([height, 0]);
-    var x = d3
+
+    let x = d3
       .scaleTime()
       .domain([minDate, maxDate])
       .range([0, width]);
-    var yAxis = d3.axisLeft(y);
-    var xAxis = d3.axisBottom(x);
+    let yAxis = d3.axisLeft(y);
+    let xAxis = d3.axisBottom(x);
 
-    var svg = d3
+    let svg = d3
       .select("body")
       .append("svg")
       .attr("height", "100%")
       .attr("width", "100%");
 
-    var margin = { left: 50, right: 50, top: 40, bottom: 0 };
+    let margin = { left: 50, right: 50, top: 40, bottom: 0 };
 
-    var chartGroup = svg
+    let chartGroup = svg
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    var line = d3
+    let line = d3
       .line()
       .x(function(d) {
         return x(d.month);
