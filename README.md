@@ -1,6 +1,6 @@
 # 3d Exploration
 
-Trying to improve my understand of d3.
+Improve my understanding of d3.
 
 ## Screen Shot
 
