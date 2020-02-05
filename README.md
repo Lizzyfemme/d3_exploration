@@ -15,3 +15,7 @@ Improve my understanding of d3.
 ### Area Chart
 
 !["Area Chart"](https://github.com/Lizzyfemme/d3_exploration/blob/master/images/areaChart.png)
+
+### Voronoi Tessellation
+
+!["Area Chart"](https://github.com/Lizzyfemme/d3_exploration/blob/master/images/voronoi.png)

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Voronoi Tessellation</title>
+    <style>
+      body {
+        height: 100vh;
+        width: 100vw;
+      }
+      g.dots circle {
+        fill: steelblue;
+      }
+    </style>
+    <script type="text/javascript" src="../library/d3.v4.js"></script>
+  </head>
+
+  <body>
+    <script type="text/javascript">
+      const width = 1800;
+      const height = 900;
+      const vertices = d3.range(100).map(function(d) {
+        return [Math.random() * width, Math.random() * height];
+      });
+      const voronoi = d3.voronoi().size([width, height]);
+      const svg = d3
+        .select("body")
+        .append("svg")
+        .attr("width", "100%")
+        .attr("height", "100%");
+
+      svg
+        .append("g")
+        .attr("class", "polyons")
+        .selectAll("path")
+        .data(voronoi.polygons(vertices))
+        .enter()
+        .append("path")
+        .attr("fill", "none")
+        .attr("stroke", "steelblue")
+        .attr("d", function(d) {
+          return "M" + d.join("L") + "Z";
+        });
+
+      svg
+        .append("g")
+        .attr("class", "dots")
+        .selectAll("circle")
+        .data(vertices)
+        .enter()
+        .append("circle")
+        .attr("cx", function(d) {
+          return d[0];
+        })
+        .attr("cy", function(d) {
+          return d[1];
+        })
+        .attr("r", "2.5");
+    </script>
+  </body>
+</html>
